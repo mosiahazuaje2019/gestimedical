@@ -4,76 +4,39 @@
     <BreezeAuthenticatedLayout>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-20">
+                <div class="bg-transparent overflow-hidden shadow-sm sm:rounded-lg justify-center">
                     <div class="grid">
-                        <div class="col">
-                            <Card>
-                                <template #header>
-                                </template>
-                                <template #title>
-                                    <span class="text-center">
-                                        
-                                        <h4>Administrar Medicamentos</h4>
-                                    </span>
-                                </template>
-                                <template #content>
-                                </template>
-                                <template #footer>
-                                    <PrimeButton icon="fa-solid fa-capsules" label="Abrir" class="p-button-secondary w-full" style="margin-left: .5em" @click="activateProducts" />
-                                </template>
-                            </Card>
+                        <div class="col-12">
+                            <PrimeButton
+                                label="Administrar Medicamentos"
+                                class="p-button-secondary w-full"
+                                @click="activateProducts"
+                            />
                         </div>
-                        <div class="col">
-                            <Card>
-                                <template #header>
-
-                                </template>
-                                <template #title>
-                                    <span class="text-center">
-                                        <h4>Administrar Diagnósticos</h4>
-                                    </span>
-                                </template>
-                                <template #content>
-                                </template>
-                                <template #footer>
-                                    <PrimeButton icon="pi pi-arrow-right" label="Abrir" class="p-button-secondary w-full" style="margin-left: .5em" @click="activateDiagnostic" />
-                                </template>
-                            </Card>
+                        <div class="col-12">
+                            <PrimeButton
+                                label="Administrar Diagnósticos"
+                                class="p-button-secondary w-full"
+                                @click="activateDiagnostic" />
                         </div>
-                        <div class="col">
-                            <Card>
-                                <template #header>
-
-                                </template>
-                                <template #title>
-                                    <span class="text-center">
-                                        <h4>Administrar Direcciones</h4>
-                                    </span>
-                                </template>
-                                <template #content>
-                                </template>
-                                <template #footer>
-                                    <PrimeButton icon="pi pi-arrow-right" label="Abrir" class="p-button-secondary w-full" style="margin-left: .5em" @click="activateAddress" />
-                                </template>
-                            </Card>
+                        <div class="col-12">
+                            <PrimeButton
+                                label="Administrar Direcciones"
+                                class="p-button-secondary w-full"
+                                @click="activateAddress" />
                         </div>
-                        <div class="col">
-                            <Card>
-                                <template #header>
-
-                                </template>
-                                <template #title>
-                                    <span class="text-center">
-                                        <h4>Administrar Presentaciones</h4>
-                                    </span>
-                                </template>
-                                <template #content>
-                                </template>
-                                <template #footer>
-                                    <PrimeButton icon="pi pi-arrow-right" label="Abrir" class="p-button-secondary w-full" style="margin-left: .5em" @click="activatePresentation" />
-                                </template>
-                            </Card>
+                        <div class="col-12">
+                            <PrimeButton
+                                label="Administrar Presentaciones"
+                                class="p-button-secondary w-full"
+                                @click="activatePresentation" />
+                        </div>
+                        <div class="col-12">
+                            <PrimeButton
+                                label="Administrar Pacientes"
+                                class="p-button-secondary w-full"
+                                @click="activatePatient" />
                         </div>
                     </div>
                     <div class="grid">
@@ -88,6 +51,9 @@
                         </div>
                         <div class="col p-6" v-if="presentation === true">
                             <ListPresentation />
+                        </div>
+                        <div class="col p-6" v-if="patient === true">
+                            <ListPatient />
                         </div>
                     </div>
                 </div>
@@ -104,6 +70,7 @@ import ListProducts from "@/Pages/Products/ListProducts";
 import ListDiagnostic from "@/Pages/Diagnostics/ListDiagnostic";
 import ListAddress from "@/Pages/Address/ListAddress";
 import ListPresentation from "@/Pages/Presentations/ListPresentation";
+import ListPatient from "@/Pages/Patients/ListPatient";
 
 export default {
     components: {
@@ -111,6 +78,7 @@ export default {
         ListDiagnostic,
         ListAddress,
         ListPresentation,
+        ListPatient,
         BreezeAuthenticatedLayout,
         Head,
     },
@@ -119,7 +87,8 @@ export default {
             product: false,
             diagnostic: false,
             address: false,
-            presentation: false
+            presentation: false,
+            patient: false
         }
     },
     methods: {
@@ -127,25 +96,36 @@ export default {
             this.address = false;
             this.diagnostic = false;
             this.presentation = false;
+            this.patient = false;
             this.product = true;
         },
         activateDiagnostic() {
             this.address = false;
             this.product = false;
             this.presentation = false;
+            this.patient = false;
             this.diagnostic = true;
         },
         activateAddress() {
             this.diagnostic = false;
             this.product = false;
             this.presentation = false;
+            this.patient = false;
             this.address= true;
         },
         activatePresentation() {
             this.diagnostic = false;
             this.product = false;
             this.address= false;
+            this.patient = false;
             this.presentation = true;
+        },
+        activatePatient() {
+            this.diagnostic = false;
+            this.product = false;
+            this.address= false;
+            this.presentation = false;
+            this.patient = true;
         }
     }
 }

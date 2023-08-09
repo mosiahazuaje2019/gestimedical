@@ -20,4 +20,12 @@ class Patient extends Model
     public function patient_lms() {
        return $this->hasMany(PatientLm::class, 'patient_id', 'id');
     }
+
+    public function patient_adress() {
+        return $this->hasMany(PatientAdress::class)->where('category','address');
+    }
+
+    public function patient_phone() {
+        return $this->hasMany(PatientAdress::class)->where('category','phone');
+    }
 }

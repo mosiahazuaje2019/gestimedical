@@ -3,15 +3,21 @@
 namespace App\Exports;
 
 use App\Models\Patient;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class PatientExport implements FromCollection
+class PatientExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+
+        /**
+     * @return View
+     */
+    public function view():View
     {
-        return Patient::all();
+        $patients = Patient::with(['patient_adress','patient_phone'])->orderBy('id','desc')->get();
+        
+        return view('patients.index', [
+            'patients' => $patients
+        ]);
     }
 }
