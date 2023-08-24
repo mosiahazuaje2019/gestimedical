@@ -60,9 +60,9 @@ class OrderExport extends DefaultValueBinder implements  FromView, ShouldAutoSiz
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
             ],
         ];
-        $sheet->getStyle('A2:H2')->applyFromArray($styleArray);
-        $sheet->getStyle('A3:H3')->applyFromArray($styleArray);
-        $sheet->getStyle('A4:H4')->applyFromArray($styleArray);
+        $sheet->getStyle('A2:I2')->applyFromArray($styleArray);
+        $sheet->getStyle('A3:I3')->applyFromArray($styleArray);
+        $sheet->getStyle('A4:I4')->applyFromArray($styleArray);
         $sheet->getStyle('C')->applyFromArray($styleAlign);
     }
 
