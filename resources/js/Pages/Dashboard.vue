@@ -53,7 +53,8 @@
                             <ListPresentation />
                         </div>
                         <div class="col p-6" v-if="patient === true">
-                            <ListPatient />
+                            <ListPatient v-if="$page.props.auth.user.role==='Admin'" />
+                            <Message v-if="$page.props.auth.user.role==='Basic'" severity="warn" :closable="false">No cuenta con acceso a esta sección</Message>
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,7 @@ export default {
             this.presentation = false;
             this.patient = true;
         }
-    }
+    },
 }
 </script>
 <style scoped>

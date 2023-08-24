@@ -10,6 +10,8 @@
                 <tr>
                     <th><strong>Nombre</strong></th>
                     <th><strong>Cédula</strong></th>
+                    <th><strong>Edad</strong></th>
+                    <th><strong>Ciudad</strong></th>
                     <th><strong>Dirección</strong></th>
                     <th><strong>Teléfono</strong></th>
                 </tr>
@@ -19,6 +21,8 @@
                     <tr>
                         <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
                         <td>{{ $patient->personal_id }}</td>
+                        <td>{{ $patient->age }}</td>
+                        <td>{{ $patient->city->city }}</td>
                         <td>{{ $patient->patient_adress[0]->name }}</td>
                         <td>{{ $patient->patient_phone[0]->name }}</td>
                     </tr>

@@ -80,9 +80,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::get('getCountPreInvoices/{id}', [PreInvoiceController::class, 'getCountPreInvoices']);
     Route::get('getInvoiceActive', [PreInvoiceController::class,  'getInvoiceActive']);
     Route::get('getLmInfo/{id}', [PatientLmController::class, 'getLmInfo']);
+    Route::get('getPatientsByDate/{dateini}/{dateend}',[PatientController::class, 'getPatientsByDate']);
 
     //Exports Excel
-    Route::get('export_patients', [PatientController::class, 'export']);
+    Route::get('export_patients/{iniDate}/{endDate}', [PatientController::class, 'export']);
     Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
     Route::get('export_values/{dateini}/{dateend}', [PatientLmDetailController::class, 'export']);
 

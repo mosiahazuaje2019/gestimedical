@@ -32,7 +32,7 @@ class PatientController extends Controller
      */
     public function index(): JsonResponse
     {
-        
+
         return response()->json(
             new PatientCollection(
                 $this->patient->orderBy(
@@ -97,7 +97,15 @@ class PatientController extends Controller
         return response()->json(null, 204);
     }
 
-    public function export(){
-        return Excel::download(new PatientExport, 'patients.xlsx');
+    public function getPatientsByDate(Patient $patient, $dateIni, $dateEnd) {
+        $patients = Patient::orderBy('id','asc')
+            ->patientbydate($dateIni,$dateEnd)
+            ->get();
+
+        return response()->json(new PatientCollection($patients));
+    }
+
+    public function export($iniDate,$endDate){
+        return Excel::download(new PatientExport($iniDate, $endDate), 'patients.xlsx');
     }
 }

@@ -20,7 +20,7 @@
                         <div class="field float-right mt-3" v-if="order_checks > 0">
                             <PrimeButton label="Revisar factura" icon="pi pi-check" iconPos="right" class="sm:-bottom-1.5" />
                         </div>
-                    </div>                    
+                    </div>
                     <div class="p-6 bg-white border-b border-gray-200 grid grid-cols-12 justify-center" v-if="iniDate !== null">
                         <a :href="`/api/export_values/${iniDate}/${endDate}}`"
                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-6 rounded"
@@ -54,7 +54,7 @@ export default {
                 orders: null
             },
             iniDate: null,
-            endDate: null,           
+            endDate: null,
         }
     },
     methods: {
@@ -62,7 +62,7 @@ export default {
             let selectedDate = this.form.dates;
             this.iniDate = new Date(selectedDate[0]).toLocaleDateString('fr-CA');
             this.endDate = new Date(selectedDate[1]).toLocaleDateString('fr-CA');
-            
+
 /*             const res = await axios.get(`/api/export_values/${iniDate}/${endDate}`).then((res) => {
                 this.orders = res.data;
             }) */

@@ -17,6 +17,11 @@ class Patient extends Model
         'city_id'
     ];
 
+    //Relationship
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
+
     public function patient_lms() {
        return $this->hasMany(PatientLm::class, 'patient_id', 'id');
     }
@@ -27,5 +32,11 @@ class Patient extends Model
 
     public function patient_phone() {
         return $this->hasMany(PatientAdress::class)->where('category','phone');
+    }
+
+    //Query Scope
+    public function scopePatientByDate($query, $dateIni, $dateEnd) {
+        if($dateIni !== 'null')
+            return $query->whereBetween('created_at', [$dateIni,$dateEnd]);
     }
 }

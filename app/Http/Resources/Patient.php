@@ -21,7 +21,8 @@ class Patient extends JsonResource
             'personal_id' => $this->personal_id,
             'age'         => $this->age,
             'city_id'     => $this->city_id,
-            'full_name'   => $this->first_name.' '.$this->last_name
+            'full_name'   => $this->first_name.' '.$this->last_name,
+            'created_at'  => $this->created_at->format('d/m/Y')
         ];
     }
 }

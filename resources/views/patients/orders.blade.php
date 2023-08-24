@@ -12,7 +12,7 @@
                 <th colspan="9">RELACIÓN DE PACIENTES SEGUROS BOLIVAR S.A</th>
             </tr>
             <tr>
-                <th colspan="9">ASISPHARMA SAS . NIT 900.644.246-3</th>
+                <th colspan="9">GESTIMEDICAL SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
                 <th colspan="9">FACTURA # ASI - {{ $invoice_number }}</th>
@@ -123,7 +123,7 @@
             <td></td>
             <td><strong>VALOR TOTAL FACTURA: </strong></td>
             <td data-format="$#,##0_-"><strong>
-                {{ 
+                {{
                     $orders->map(function($order) {
                         return array_reduce(
                             $order->toArray(),

@@ -32,6 +32,7 @@ import Checkbox from 'primevue/checkbox';
 import Slider from "primevue/slider";
 import ProgressSpinner from 'primevue/progressspinner';
 import FileUpload from 'primevue/fileupload';
+import Message from 'primevue/message';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Asispharma';
 const emitter = mitt();
@@ -60,6 +61,7 @@ createInertiaApp({
             .component('Slider', Slider)
             .component('ProgressSpinner', ProgressSpinner)
             .component('FileUpload', FileUpload)
+            .component('Message', Message)
             .use(plugin)
             .use(PrimeVue)
             .use(ToastService)
